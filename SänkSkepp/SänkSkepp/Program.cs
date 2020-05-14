@@ -11,7 +11,6 @@ namespace SänkSkepp
         static void Main(string[] args)
         {
             new Game();
-            Console.WriteLine("hej");
         }
     }
 }

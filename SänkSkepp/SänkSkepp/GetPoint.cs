@@ -8,12 +8,10 @@ namespace SänkSkepp
 {
     class GetPoint<T>
     {
-        private T data;
-        // using properties 
+        private T data; 
         public T Value
         {
 
-            // using accessors 
             get
             {
                 return this.data;
@@ -27,7 +25,6 @@ namespace SänkSkepp
         public T Value2
         {
 
-            // using accessors 
             get
             {
                 return this.data;
@@ -40,7 +37,6 @@ namespace SänkSkepp
         public T Value3
         {
 
-            // using accessors 
             get
             {
                 return this.data;

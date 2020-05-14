@@ -112,7 +112,7 @@ namespace SänkSkepp
         {
             while (vBounds == 1)
             {
-                //Calling generic Class
+                //kallar generic klass
                 VerticalCordinates<string> vertical = new VerticalCordinates<string>();
                 vertical.Value = "Please enter your vertical coordinate (1-8) or enter 0 to exit!";
                 Console.WriteLine(vertical.Value);
@@ -138,8 +138,8 @@ namespace SänkSkepp
 
         private void ShipLocation(int ver, int hor, ref int boats, ref int score, char[,] grid, char[,] answer_grid)
         {
-            //set where the ships are
-            if (answer_grid[ver - 1, hor - 1] == '1') //found the ship
+            //sätter vart "shipen" ska vara
+            if (answer_grid[ver - 1, hor - 1] == '1') //hittate skäppet
             {
                 grid[ver - 1, hor - 1] = '*';
                 score++; //adding the score
@@ -147,13 +147,13 @@ namespace SänkSkepp
                 Console.WriteLine("Your Score is: " + score);
                 boats = boats - 1;
             }
-            else if (answer_grid[ver - 1, hor - 1] == '2') // hit near the ship
+            else if (answer_grid[ver - 1, hor - 1] == '2') // nära skäppet
             {
                 grid[ver - 1, hor - 1] = '%';
                 Console.WriteLine("near miss!");
                 Console.WriteLine("Your Score is: " + score);
             }
-            else // missed the ship
+            else // miss
             {
                 grid[ver - 1, hor - 1] = 'x';
                 Console.WriteLine("miss!");
@@ -163,7 +163,7 @@ namespace SänkSkepp
 
         private void AnswerGrid(out int hBounds, out int vBounds, char[,] answer_grid)
         {
-            //Show answer grid
+            //visa svars grid
             Console.WriteLine();
             Console.WriteLine("ANSWER GRID");
             for (int i = 0; i < answer_grid.GetLength(0); i++)
@@ -181,7 +181,7 @@ namespace SänkSkepp
         private string GetName()
         {
             string playerName = Console.ReadLine();
-            //asking to enter name
+            //frågar om namn
             while (string.IsNullOrEmpty(playerName))
             {
                 Console.WriteLine("Please Enter your name to continue: ");
@@ -222,14 +222,14 @@ namespace SänkSkepp
 
         private void Grid(out char[,] grid, out char[,] answer_grid)
         {
-            //This makes a grid, or, an array of arrays
+            //gör ett grid av arrays av arrays
             grid = new char[8, 8];
             for (int i = 0; i < grid.GetLength(0); i++)
             {
 
                 for (int j = 0; j < grid.GetLength(1); j++)
                 {
-                    //single char are in '', strings are in "".
+                    //single char är i '', strings är i ""
                     grid[i, j] = '0';
                 }
             }
@@ -240,7 +240,7 @@ namespace SänkSkepp
 
                 for (int y = 0; y < answer_grid.GetLength(1); y++)
                 {
-                    //single char are in '', strings are in "".
+                    //single char är i '', strings är i ""
                     answer_grid[x, y] = '0';
                 }
             }

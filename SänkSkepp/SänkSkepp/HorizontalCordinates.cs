@@ -9,12 +9,10 @@ namespace SänkSkepp
     class HorizontalCordinates<T>
     {
         private T data;
-
-        // using properties 
+ 
         public T Value
         {
 
-            // using accessors 
             get
             {
                 return this.data;
