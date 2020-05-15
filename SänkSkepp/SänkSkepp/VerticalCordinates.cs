@@ -9,12 +9,10 @@ namespace SänkSkepp
     class VerticalCordinates<T>
     {
         private T data;
-
        
         public T Value
         {
-
-           
+                   
             get
             {
                 return this.data;

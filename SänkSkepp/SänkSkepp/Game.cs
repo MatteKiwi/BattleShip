@@ -15,7 +15,7 @@ namespace SänkSkepp
             int boats = 5;
             int score = 0;
             string playerName;
-            Random r = new Random();
+            Random gen = new Random();
             int hBounds = 1;
             int vBounds = 1;
 
@@ -26,7 +26,7 @@ namespace SänkSkepp
             char[,] grid, answer_grid;
             Grid(out grid, out answer_grid);
 
-            Populate(r, answer_grid);
+            Populate(gen, answer_grid);
 
             Console.WriteLine("Get ready to battle! There are 5 ships to find.");
             Console.WriteLine("Please Enter your name: ");
@@ -89,22 +89,30 @@ namespace SänkSkepp
 
         private void HBounds(ref int hor, ref int hBounds)
         {
-            
+
             while (hBounds == 1)
             {
                 //kallar generic klass
                 HorizontalCordinates<string> horizontal = new HorizontalCordinates<string>();
                 horizontal.Value = "Please enter your horizontal coordinate (1-8):";
                 Console.WriteLine(horizontal.Value);
-                hor = Convert.ToInt32(Console.ReadLine());
-                if (hor < 1 || hor > 8)
+                try
                 {
-                    Console.WriteLine("Please only enter a number 1-8.");
+                    hor = Convert.ToInt32(Console.ReadLine()); //dålig convert
+                    if (hor < 1 || hor > 8)
+                    {
+                        Console.WriteLine("Please only enter a number 1-8.");
+                    }
+                    if (hor >= 1 && hor <= 8)
+                    {
+                        hBounds = 2;
+                    }
                 }
-                if (hor >= 1 && hor <= 8)
+                catch (System.FormatException)
                 {
-                    hBounds = 2;
+
                 }
+
             }
         }
 
@@ -116,23 +124,32 @@ namespace SänkSkepp
                 VerticalCordinates<string> vertical = new VerticalCordinates<string>();
                 vertical.Value = "Please enter your vertical coordinate (1-8) or enter 0 to exit!";
                 Console.WriteLine(vertical.Value);
-                ver = Convert.ToInt32(Console.ReadLine());
-                if (ver == 0)
-                {
-                    string message = playerName + ", Your Score is: " + score;
-                    Console.WriteLine(score);
 
-                    Console.WriteLine("Exiting..!");
-                    Environment.Exit(0);
-                }
-                if (ver < 1 || ver > 8)
+                try
                 {
-                    Console.WriteLine("Please only enter a number 1-8.");
+                    ver = Convert.ToInt32(Console.ReadLine()); //dålig
+                    if (ver == 0)
+                    {
+                        string message = playerName + ", Your Score is: " + score;
+                        Console.WriteLine(score);
+
+                        Console.WriteLine("Exiting..!");
+                        Environment.Exit(0);
+                    }
+                    if (ver < 1 || ver > 8)
+                    {
+                        Console.WriteLine("Please only enter a number 1-8.");
+                    }
+                    if (ver >= 1 && ver <= 8)
+                    {
+                        vBounds = 2;
+                    }
                 }
-                if (ver >= 1 && ver <= 8)
+                catch (System.FormatException)
                 {
-                    vBounds = 2;
+
                 }
+
             }
         }
 
@@ -182,7 +199,7 @@ namespace SänkSkepp
         {
             string playerName = Console.ReadLine();
             //frågar om namn
-            while (string.IsNullOrEmpty(playerName))
+            while (string.IsNullOrEmpty(playerName)) //hittat på stackoverflow
             {
                 Console.WriteLine("Please Enter your name to continue: ");
                 playerName = Console.ReadLine();
@@ -191,13 +208,13 @@ namespace SänkSkepp
             return playerName;
         }
 
-        private void Populate(Random r, char[,] answer_grid)
+        private void Populate(Random gen, char[,] answer_grid)
         {
             for (int populate = 0; populate <= 4; populate++)
             {
 
-                int a = r.Next(0, 8);
-                int b = r.Next(0, 8);
+                int a = gen.Next(0, 8);
+                int b = gen.Next(0, 8);
 
                 answer_grid[a, b] = '1';
 
