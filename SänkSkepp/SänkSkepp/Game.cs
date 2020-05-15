@@ -73,7 +73,7 @@ namespace SänkSkepp
                 }
                 AnswerGrid(out hBounds, out vBounds, answer_grid);
             }
-            Console.WriteLine("You win!");
+            Console.WriteLine("You win!"); //woooo!
         }
 
         private string ValidInput(string userInput)
