@@ -155,11 +155,10 @@ namespace SänkSkepp
 
         private void ShipLocation(int ver, int hor, ref int boats, ref int score, char[,] grid, char[,] answer_grid)
         {
-            //sätter vart "shipen" ska vara
             if (answer_grid[ver - 1, hor - 1] == '1') //hittate skäppet
             {
                 grid[ver - 1, hor - 1] = '*';
-                score++; //adding the score
+                score++;
                 Console.WriteLine("hit!");
                 Console.WriteLine("Your Score is: " + score);
                 boats = boats - 1;
