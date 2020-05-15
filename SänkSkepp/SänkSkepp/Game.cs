@@ -50,12 +50,12 @@ namespace SänkSkepp
             else if (userInput == "1")
             {
                 Console.Clear();
-                ActullyTheGame(ref ver, ref hor, ref boats, ref score, playerName, ref hBounds, ref vBounds, grid, answer_grid);
+                ActuallyTheGame(ref ver, ref hor, ref boats, ref score, playerName, ref hBounds, ref vBounds, grid, answer_grid);
             }
             Console.ReadLine();
         }
 
-        private void ActullyTheGame(ref int ver, ref int hor, ref int boats, ref int score, string playerName, ref int hBounds, ref int vBounds, char[,] grid, char[,] answer_grid)
+        private void ActuallyTheGame(ref int ver, ref int hor, ref int boats, ref int score, string playerName, ref int hBounds, ref int vBounds, char[,] grid, char[,] answer_grid)
         {
             while (boats > 0)
             {
